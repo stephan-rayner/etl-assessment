@@ -44,6 +44,14 @@ services:
   web:
     build: ./web
     restart: always
+    environment:
+      QUEUE_HOST: "rabbit"
+      QUEUE_USERNAME: "rabbitmq"
+      QUEUE_PASSWORD: "rabbitmq"
     expose:
       - 5000
+
+  # loader:
+  #   build: ./loader
+  #   restart: always
 
