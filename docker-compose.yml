@@ -28,7 +28,7 @@ services:
       - 8080:8080
 
   web:
-    build: .
+    build: ./web
     restart: always
     expose:
       - 5000

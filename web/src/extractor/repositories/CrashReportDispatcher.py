@@ -1,5 +1,5 @@
 from .CrashReportLoader import CrashReportLoader
-from web import config
+from src import config
 import pandas as pd
 
 class CrashReportDispatcher(object):
@@ -7,10 +7,6 @@ class CrashReportDispatcher(object):
 
     def __init__(self):
         super(CrashReportDispatcher, self).__init__()
-
-    def db_save(self, event):
-        loader = CrashReportLoader()
-        loader.save(event)
 
     def csv_save(self, event):
         csv_dir = '{}crash_reports.csv'.format(config.CSV_DIR)
@@ -24,3 +20,7 @@ class CrashReportDispatcher(object):
 
     def save(self, event):
         self.csv_save(event)
+
+    def submit(self, event):
+        # submit to correct rabbit queue
+        pass

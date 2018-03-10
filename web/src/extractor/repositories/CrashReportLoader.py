@@ -1,4 +1,4 @@
-from web import config
+from src import config
 import psycopg2
 
 

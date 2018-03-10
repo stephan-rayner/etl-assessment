@@ -1,4 +1,4 @@
-from web.BaseValidator import BaseValidator
+from src.BaseValidator import BaseValidator
 from .schemas import *
 
 
