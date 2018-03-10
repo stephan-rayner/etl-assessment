@@ -1,4 +1,5 @@
-from .repositories.CrashReportDispatcher import CrashReportDispatcher
+from .Dispatcher import Dispatcher
+from src import config
 
 class ExtractorService(object):
     """ Deals with all actions related to extraction.
@@ -11,20 +12,18 @@ class ExtractorService(object):
 
     def __init__(self):
         super(ExtractorService, self).__init__()
+        self.crashReportDispatcher = Dispatcher('crash_report')
 
     def crash_report(self, user_id, timestamp, message):
         print("user_id: {}, timestamp: {}, message: {}".format(
             user_id, timestamp, message))
 
-        dispatcher = CrashReportDispatcher()
-        dispatcher.save(
-            {
-                'message': message,
-                'timestamp': timestamp,
-                'user_id': user_id               
-            }
-        )
-
+        self.crashReportDispatcher.submit({
+            'message': message,
+            'timestamp': timestamp,
+            'user_id': user_id
+        })
+        print(config.DB_STRING)
         return {'status': 'success'}
 
     def purchase(self, user_id, timestamp, sku):
