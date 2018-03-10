@@ -1,7 +1,8 @@
 
 # Created by https://www.gitignore.io/api/vim,python,sublimetext,visualstudiocode
 
-data/
+DB/
+
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
