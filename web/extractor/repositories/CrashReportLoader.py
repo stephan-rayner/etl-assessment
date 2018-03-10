@@ -1,12 +1,11 @@
-import psycopg2
 from web import config
+import psycopg2
 
 
-class CrashReportRepo(object):
-    """ Deals with saving crash reports to the db."""
+class CrashReportLoader(object):
 
     def __init__(self):
-        super(CrashReportRepo, self).__init__()
+        super(CrashReportLoader, self).__init__()
 
     def save(self, event):
         q = """INSERT INTO crash_report(user_id, timestamp, message)
