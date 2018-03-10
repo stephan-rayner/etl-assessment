@@ -7,5 +7,3 @@ DB_PASSWORD = environ.get("DB_PASSWORD", "")
 
 DB_STRING = "dbname='{}' user='{}' host='{}' password='{}'".format(
     DB_NAME, DB_USER, DB_HOST, DB_PASSWORD)
-
-CSV_DIR = "./web/extractor/repositories/CSV/"
