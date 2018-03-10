@@ -41,8 +41,7 @@ for i in range(count):
 
 
 args_str = b','.join(curs.mogrify("(%s,%s,%s)", x) for x in data)
-curs.execute(b"INSERT INTO crash_report(user_id, timestamp, message) VALUES " +
-             args_str)
+curs.execute(b"INSERT INTO crash_report(user_id, timestamp, message) VALUES " + args_str)
 conn.commit()
 print("ARGS:", args_str)
 
