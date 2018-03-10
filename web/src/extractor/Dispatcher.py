@@ -11,5 +11,6 @@ class Dispatcher(object):
 
     def submit(self, event):
         # submit to rabbit queue
+        # TODO: when publish fail reconnect to queue and then try
         payload = json.dumps(event)
         self.channel.basic_publish(exchange='', routing_key=self.queue_name, body=payload)
