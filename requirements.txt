@@ -2,3 +2,4 @@ Flask==0.12.2
 requests==2.18.4
 jsonschema==2.6.0
 gunicorn==19.7.1
+psycopg2==2.7.4

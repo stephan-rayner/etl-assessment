@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+
+  lb:
+    image: dockercloud/haproxy
+    ports:
+      - 80:80
+    restart: always
+    links:
+      - web
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: iugo
+      POSTGRES_PASSWORD: cAgw8Eva  # Not the prod password clearly.
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  web:
+    build: .
+    restart: always
+    expose:
+      - 5000
+

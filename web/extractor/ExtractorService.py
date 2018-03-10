@@ -1,3 +1,5 @@
+from .repositories.CrashReportRepo import CrashReportRepo
+
 class ExtractorService(object):
     """ Deals with all actions related to extraction.
 
@@ -13,6 +15,16 @@ class ExtractorService(object):
     def crash_report(self, user_id, timestamp, message):
         print("user_id: {}, timestamp: {}, message: {}".format(
             user_id, timestamp, message))
+        
+        repo = CrashReportRepo()
+        repo.save(
+            {
+                'user_id': user_id,
+                'timestamp': timestamp,
+                'message': message
+            }
+        )
+        
         return {'status': 'success'}
 
     def purchase(self, user_id, timestamp, sku):
