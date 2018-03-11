@@ -50,8 +50,3 @@ services:
       QUEUE_PASSWORD: "rabbitmq"
     expose:
       - 5000
-
-  # loader:
-  #   build: ./loader
-  #   restart: always
-
