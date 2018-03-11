@@ -7,10 +7,10 @@ class Dispatcher(object):
     def __init__(self, queue_name):
         super(Dispatcher, self).__init__()
         self.queue_name = queue_name
-        self.channel = Queues.queues[queue_name]
 
     def submit(self, event):
         # submit to rabbit queue
-        # TODO: when publish fail reconnect to queue and then try
+        connection, channel = Queues.get_queue(self.queue_name)
         payload = json.dumps(event)
-        self.channel.basic_publish(exchange='', routing_key=self.queue_name, body=payload)
+        channel.basic_publish(exchange='', routing_key=self.queue_name, body=payload)
+        connection.close()
