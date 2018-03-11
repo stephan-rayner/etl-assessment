@@ -15,18 +15,22 @@ def get_count(channel, queue):
 def load_crash_report_events():
     queue = 'crash_report'
     print("Loading::{}".format(queue))
-
+    mapper = lambda payload: (payload['user_id'], payload['timestamp'], payload['message'])
+    data = []
     # Connect Queue and stuff
     connection, channel = Queues.queues[queue]
 
-    # I think this is why we have an off by one.
+    # get count
+    count = 0
+    method_frame, header_frame, body = channel.basic_get(queue)
+    if method_frame:
+        count = method_frame.message_count
+        payload = json.loads(body)
+        data.append(mapper(payload))
+        channel.basic_ack(method_frame.delivery_tag)
 
-    count = get_count(channel, queue)
     print("Count:", count)
-    data = []
-
-    mapper = lambda payload: (payload['user_id'], payload['timestamp'], payload['message'])
-
+    
     for i in range(count):
         method_frame, header_frame, body = channel.basic_get(queue)
         if method_frame:
@@ -49,16 +53,22 @@ def load_crash_report_events():
 def load_purchase_events():
     queue = 'purchase'
     print("Loading::{}".format(queue))
-
+    mapper = lambda payload: (payload['user_id'], payload['timestamp'], payload['sku'])
+    data = []
     # Connect Queue and stuff
     connection, channel = Queues.queues[queue]
 
-    count = get_count(channel, queue)
+    # get count
+    count = 0
+    method_frame, header_frame, body = channel.basic_get(queue)
+    if method_frame:
+        count = method_frame.message_count
+        payload = json.loads(body)
+        data.append(mapper(payload))
+        channel.basic_ack(method_frame.delivery_tag)
+
     print("Count:", count)
-    data = []
-
-    mapper = lambda payload: (payload['user_id'], payload['timestamp'], payload['sku'])
-
+    
     for i in range(count):
         method_frame, header_frame, body = channel.basic_get(queue)
         if method_frame:
@@ -85,16 +95,22 @@ def load_purchase_events():
 def load_install_events():
     queue = 'install'
     print("Loading::{}".format(queue))
-
+    mapper = lambda payload: ((payload['user_id'], payload['timestamp']))
+    data = []
     # Connect Queue and stuff
     connection, channel = Queues.queues[queue]
 
-    count = get_count(channel, queue)
+    # get count
+    count = 0
+    method_frame, header_frame, body = channel.basic_get(queue)
+    if method_frame:
+        count = method_frame.message_count
+        payload = json.loads(body)
+        data.append(mapper(payload))
+        channel.basic_ack(method_frame.delivery_tag)
+
     print("Count:", count)
-    data = []
-
-    mapper = lambda payload: ((payload['user_id'], payload['timestamp']))
-
+    
     for i in range(count):
         method_frame, header_frame, body = channel.basic_get(queue)
         if method_frame:
