@@ -44,9 +44,16 @@ services:
   web:
     build: ./web
     restart: always
+    depends_on:
+      - rabbit
     environment:
       QUEUE_HOST: "rabbit"
       QUEUE_USERNAME: "rabbitmq"
       QUEUE_PASSWORD: "rabbitmq"
     expose:
       - 5000
+
+networks:
+  default:
+    external:
+      name: etl-pipeline

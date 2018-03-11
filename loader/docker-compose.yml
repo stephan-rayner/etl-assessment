@@ -1,0 +1,17 @@
+version: '3'
+services:
+  loader:
+    build: .
+    environment:
+      DB_NAME: "assessment"
+      DB_HOST: "db"
+      DB_USER: "iugo"
+      DB_PASSWORD: "postgres"
+      RABBIT_USERNAME: "rabbitmq"
+      RABBIT_PASSWORD: "rabbitmq"
+      RABBIT_HOST: "rabbit"
+
+networks:
+  default:
+    external:
+      name: etl-pipeline

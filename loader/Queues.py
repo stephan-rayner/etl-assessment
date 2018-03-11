@@ -1,10 +1,15 @@
 import pika
+from os import environ
+
+username = environ.get('RABBIT_USERNAME', 'rabbitmq')
+password = environ.get('RABBIT_PASSWORD', 'rabbitmq')
+host = environ.get('RABBIT_HOST', 'localhost')
 
 def _create_queue(name):
     credentials = pika.PlainCredentials(
-        username='rabbitmq', password='rabbitmq')
+        username=username, password=password)
     parameters = pika.ConnectionParameters(
-        credentials=credentials, host='localhost')
+        credentials=credentials, host=host)
     connection = pika.BlockingConnection(parameters)
     channel = connection.channel()
     # channel.queue_declare(
