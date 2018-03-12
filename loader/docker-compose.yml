@@ -6,7 +6,7 @@ services:
       DB_NAME: "assessment"
       DB_HOST: "db"
       DB_USER: "iugo"
-      DB_PASSWORD: "postgres"
+      DB_PASSWORD: "postgres" # Chanage me before deployment
       RABBIT_USERNAME: "rabbitmq"
       RABBIT_PASSWORD: "rabbitmq"
       RABBIT_HOST: "rabbit"
