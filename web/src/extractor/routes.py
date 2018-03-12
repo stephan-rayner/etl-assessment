@@ -19,8 +19,7 @@ def extract():
         return _handle_response(400, check['reason'], 400)
 
     event_name = data['event_name']
-    print("A {} event was recieved".format(event_name))
-    
+
     extractor = ExtractorService()
 
     if event_name == 'crash_report':
@@ -34,6 +33,8 @@ def extract():
 
     if result['status'] is 'success':
         return _handle_response(0, "success", 200)
-
-
-    return jsonify({"CHEESE": "DOODLE"})
+    else:
+        # Validation should make sure that we never reach this line
+        # but it doesn't hurt to be prepared.
+        return _handle_response(404, "Event type is not known", 404)
+        # Any major exception will be caught by the top level handler.
