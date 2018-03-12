@@ -5,6 +5,7 @@ app = Flask(__name__)
 # Top Level Exception Handler
 @app.errorhandler(Exception)
 def unhandled_exception(e):
+    print("ERROR: TOP LEVEL:", e)
     return jsonify({
         'status_code': 500,
         'status_message': str(e),
