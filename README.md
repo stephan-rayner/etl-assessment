@@ -36,7 +36,7 @@ The application will be availabe on port 80. This is a good option to test scali
 
 ## Endpoints
 ### / [POST]
-Send the one of the correct JSON payloads to this endpoint.
+Send the one of the correct JSON payloads to this endpoint.G
 
 ## Future Steps
 - Pull the Queue abstraction out of loader and web as they ended up being almost the same. This way the abstraction could be used by both.
@@ -44,6 +44,6 @@ Send the one of the correct JSON payloads to this endpoint.
 - Write unit tests as opposed to just using manual system and integration tests.
 - Even harsher load testing
 - Automate adding to cron
-- Single command deploy (this is less of a need ane more of a want).
+- Single command deploy (this is less of a need and more of a want).
 - Refactor ExtractorService to improve extensibility.
 
