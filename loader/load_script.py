@@ -36,7 +36,7 @@ def unpack_data(channel, queue, mapper):
 def load_crash_report_events():
     queue = 'crash_report'
     mapper = lambda payload: (payload['user_id'], payload['timestamp'], payload['message'])
-    connection, channel = Queues.queues[queue]
+    connection, channel = Queues.get_queue(queue)
     conn, curs = DB.get_db()
     try:
         data = unpack_data(channel, queue, mapper)
@@ -58,7 +58,7 @@ def load_crash_report_events():
 def load_purchase_events():
     queue = 'purchase'
     mapper = lambda payload: (payload['user_id'], payload['timestamp'], payload['sku'])
-    connection, channel = Queues.queues[queue]
+    connection, channel = Queues.get_queue(queue)
     conn, curs = DB.get_db()
     try:
         data = unpack_data(channel, queue, mapper)
@@ -82,7 +82,7 @@ def load_purchase_events():
 def load_install_events():
     queue = 'install'
     mapper = lambda payload: ((payload['user_id'], payload['timestamp']))
-    connection, channel = Queues.queues[queue]
+    connection, channel = Queues.get_queue(queue)
     conn, curs = DB.get_db()
     try:
         data = unpack_data(channel, queue, mapper)
