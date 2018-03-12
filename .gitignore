@@ -1,7 +1,7 @@
 
 # Created by https://www.gitignore.io/api/vim,python,sublimetext,visualstudiocode
 
-DB/
+DB/creds
 
 
 ### Python ###
