@@ -34,3 +34,13 @@ The application will be availabe on port 80. This is a good option to test scali
 **Loader**
 - Run this manually: `docker-compose -f ./loader/docker-compose.yml up`
 
+
+## Future Steps
+- Pull the Queue abstraction out of loader and web as they ended up being almost the same. This way the abstraction could be used by both.
+- Better modularization of the loading code would make it more extensible.
+- Write unit tests as opposed to just using manual system and integration tests.
+- Even harsher load testing
+- Automate adding to cron
+- Single command deploy (this is less of a need ane more of a want).
+- Refactor ExtractorService to improve extensibility.
+
