@@ -11,6 +11,6 @@ class BaseValidator(object):
         """Validate JSON payload against schema"""
         try:
             jsonschema.validate(schema=schema, instance=payload)
-            return True
-        except:
-            return False
+            return True, None
+        except Exception as e:
+            return False, str(e)

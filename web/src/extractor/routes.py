@@ -14,7 +14,7 @@ def _handle_response(code, message, status):
 def extract():
     data = request.json
     validator = Validator()
-    check = validator.validate_extract_request(data)
+    check = validator.validate(data)
     if not check['valid']:
         return _handle_response(400, check['reason'], 400)
 
