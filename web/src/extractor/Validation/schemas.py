@@ -51,3 +51,9 @@ install_schema = {
     },
     "required": ["event_name", "user_id", "timestamp"]
 }
+
+event_name_schema_mapper = {
+    "crash_report": crash_report_schema,
+    "purchase": purchase_schema,
+    "install": install_schema
+}

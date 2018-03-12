@@ -9,12 +9,7 @@ class Validator(BaseValidator):
         super(Validator, self).__init__()
 
     def validate(self, payload):
-        event_name_schema_mapper = {
-            "crash_report": crash_report_schema,
-            "purchase": purchase_schema,
-            "install": install_schema
-        }
-
+        
         if "event_name" not in payload:
             return {"valid": False, "reason": "event_name was not submitted"}
 
