@@ -16,3 +16,10 @@ def get_queue(name):
     channel.queue_declare(
         queue=name, durable=True, auto_delete=False, exclusive=False)
     return connection, channel
+
+# initiating queues.
+queues = {
+    'crash_report': _create_queue('crash_report'),
+    'purchase': _create_queue('purchase'),
+    'install': _create_queue('install')
+} 
