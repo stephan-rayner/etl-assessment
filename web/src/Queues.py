@@ -19,7 +19,7 @@ def get_queue(name):
 
 # initiating queues.
 queues = {
-    'crash_report': _create_queue('crash_report'),
-    'purchase': _create_queue('purchase'),
-    'install': _create_queue('install')
+    'crash_report': get_queue('crash_report'),
+    'purchase': get_queue('purchase'),
+    'install': get_queue('install')
 } 
