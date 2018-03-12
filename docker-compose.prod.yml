@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+
+  lb:
+    image: dockercloud/haproxy
+    ports:
+      - 80:80
+    restart: always
+    links:
+      - web
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+
+  rabbit:
+    image: "rabbitmq:3-management"
+    restart: always
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+
+  web:
+    build: ./web
+    restart: always
+    depends_on:
+      - rabbit
+    environment:
+      QUEUE_HOST: "rabbit"
+      QUEUE_USERNAME: "rabbitmq"
+      QUEUE_PASSWORD: "rabbitmq"
+    expose:
+      - 5000
+
+networks:
+  default:
+    external:
+      name: etl-pipeline
