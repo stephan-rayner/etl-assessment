@@ -24,7 +24,7 @@ submit_purchase(){
         "event_name": "purchase",
         "user_id": 1,
         "timestamp": 1483228810,
-        "sku": "sku-456"
+        "sku": "com.iugome.knights.52gold"
     }'
 }
 
