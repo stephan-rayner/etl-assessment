@@ -1,0 +1,1 @@
+*/5 * * * * /usr/local/bin/docker-compose -f /home/srayner/etl-assessment/loader/docker-compose.yml up >> /home/srayner/log/loader.log 2>&1
