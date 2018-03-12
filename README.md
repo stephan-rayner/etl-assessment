@@ -34,6 +34,9 @@ The application will be availabe on port 80. This is a good option to test scali
 **Loader**
 - Run this manually: `docker-compose -f ./loader/docker-compose.yml up`
 
+## Endpoints
+### / [POST]
+Send the one of the correct JSON payloads to this endpoint.
 
 ## Future Steps
 - Pull the Queue abstraction out of loader and web as they ended up being almost the same. This way the abstraction could be used by both.
